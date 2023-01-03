@@ -1,11 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "paths": {
-      "assets": ["src/assets"],
-      "components": ["src/components"],
-      "pages": ["src/pages"]
-    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -22,5 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "extends": "./tsconfig.base.json",
   "include": ["src"]
 }
