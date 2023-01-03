@@ -1,0 +1,41 @@
+@import './variables.scss';
+
+@mixin title {
+  font-family: 'Nunito';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 140%;
+  color: $color-text-main;
+}
+
+@mixin productName {
+  font-family: 'Nunito';
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $color-text-main;
+}
+
+@mixin productDescription {
+  font-family: 'Nunito';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 120%;
+  color: $color-text-light;
+}
+
+@mixin menu {
+  font-family: 'Nunito';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: $color-text-main;
+}
+
+@mixin category {
+  font-family: 'Nunito';
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 140%;
+  color: $color-text-main;
+}
