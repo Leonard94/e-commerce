@@ -1,0 +1,29 @@
+@import '@styles/variables';
+
+.phone {
+  font-family: 'Nunito';
+  font-style: normal;
+
+  &_number {
+    display: block;
+    transition: color 0.3s ease;
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 100%;
+    color: $color-text-main;
+
+    &:hover {
+      color: $color-accent-main;
+    }
+  }
+
+  &_description {
+    display: block;
+
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 120%;
+    color: $color-text-light;
+  }
+}

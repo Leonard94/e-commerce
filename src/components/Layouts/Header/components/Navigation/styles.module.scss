@@ -1,0 +1,17 @@
+@import '@styles/variables';
+@import '@styles/typography';
+
+.menu_list {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  @include menu;
+
+  padding: 10px 25px;
+
+  &_active {
+    color: $color-accent-main;
+  }
+}

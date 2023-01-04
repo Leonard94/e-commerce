@@ -1,0 +1,21 @@
+@import './reset.scss';
+@import '@assets/fonts/fonts.scss';
+@import './variables.scss';
+
+html, body {
+  font-family: 'Nunito';
+  font-style: normal;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+span {
+  font-family: 'Nunito';
+  font-style: normal;
+}
+
+

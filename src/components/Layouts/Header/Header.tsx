@@ -1,14 +1,11 @@
-import { UserProfile } from '@components/UserProfile/UserProfile'
-import { ShoppingCart } from '@components/ShoppingCart/ShoppingCart'
-
 import { Logo } from './components/Logo/Logo'
 import { Navigation } from './components/Navigation/Navigation'
 import { Phone } from './components/Phone/Phone'
+import { CartProfileHeader } from './components/CartProfileHeader/CartProfileHeader'
 
 import styles from './styles.module.scss'
 
 export const Header = () => {
-  // @duplicate
   return (
     <header className={styles.header}>
       <div className='container'>
@@ -16,8 +13,7 @@ export const Header = () => {
           <Logo />
           <Navigation />
           <Phone />
-          <UserProfile />
-          <ShoppingCart />
+          <CartProfileHeader />
         </div>
       </div>
     </header>
