@@ -1,6 +1,8 @@
 import { getLowestPrice } from '@utils/getLowestPrice'
 import { TProduct } from 'src/types/product'
 
+import { Button } from '@components/UI/Button/Button'
+
 import ImgNotFound from '@assets/icons/img-not-found.svg'
 import styles from './styles.module.scss'
 
@@ -26,9 +28,9 @@ export const ProductCard: React.FC<TProduct> = ({
       </div>
       <div className={styles.footer}>
         <div className={styles.price}>{getLowestPrice(sizes)}</div>
-        <button disabled={disabled}>
-          {disabled ? 'Закончилось' : 'Выбрать'}
-        </button>
+        <Button type='button' view='primary' small disabled={disabled}>
+          {disabled ? 'закончилось' : 'выбрать'}
+        </Button>
       </div>
     </article>
   )
