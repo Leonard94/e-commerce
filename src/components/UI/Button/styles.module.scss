@@ -1,0 +1,80 @@
+@import '@styles/variables.scss';
+@import '@styles/typography.scss';
+
+.btn {
+  @include btn;
+
+  transition: all 0.2s ease;
+  padding: 9px 32px;
+  border-style: solid;
+  border-radius: 20px;
+
+  &_full {
+    width: 100%;
+  }
+
+  &_small {
+    padding: 5px 20px;
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
+}
+
+.primary {
+  color: $color-background-main;
+  background: $color-accent-main;
+
+  &:hover {
+    background: $color-accent-light;
+  }
+
+  &:disabled {
+    background: $color-background-dark;
+    cursor: default;
+
+    &:hover {
+      background: $color-background-dark;
+    }
+    &:active {
+      background: $color-background-dark;
+    }
+  }
+
+  &:focus {
+    // !todo
+  }
+
+  &:active {
+    background: $color-accent-dark;
+  }
+}
+
+.secondary {
+  color: $color-accent-main;
+  border: 1px solid $color-accent-main;
+  border-color: $color-accent-main;
+  background: inherit;
+
+  &:hover {
+    border-color: $color-accent-light;
+    color: $color-accent-dark;
+  }
+
+  &:disabled {
+    color: $color-background-main;
+    background: $color-background-dark;
+    border-color: $color-background-dark;
+    cursor: default;
+
+    &:hover {
+      background: $color-background-dark;
+    }
+
+    &:active {
+      background: $color-background-dark;
+      transform: scale(1);
+    }
+  }
+}

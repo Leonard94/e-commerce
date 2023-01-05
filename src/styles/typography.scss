@@ -44,7 +44,15 @@
 @mixin category {
   font-family: 'Nunito';
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 140%;
   color: $color-text-main;
 }
+
+@mixin btn {
+  font-family: 'Nunito';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+}
+
