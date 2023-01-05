@@ -1,0 +1,48 @@
+@import '@styles/variables';
+@import '@styles/typography';
+
+.footer {
+  background: $color-text-main;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 90px 0;
+}
+
+.phone {
+  font-weight: 400;
+  line-height: 120%;
+  font-size: 14px;
+
+  &_number {
+    margin-bottom: 5px;
+
+    a {
+      font-size: 32px;
+      color: $color-accent-main;
+    }
+    span {
+      color: $color-text-light;
+      padding-left: 12px;
+    }
+  }
+  &_info {
+    color: $color-background-dark;
+  }
+}
+
+.info {
+  li {
+    font-size: 14px;
+    line-height: 120%;
+    color: #AEAEAE;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+}
