@@ -1,5 +1,5 @@
 import { getLowestPrice } from '@utils/getLowestPrice'
-import { TProduct } from 'src/types/product'
+import { TProduct } from '../../../../../types/product'
 
 import { Button } from '@components/UI/Button/Button'
 
@@ -13,6 +13,7 @@ export const ProductCard: React.FC<TProduct> = ({
   preview_url,
   disabled,
 }) => {
+
   const productImg = preview_url
     ? process.env.REACT_APP_PRODUCT_URL + '/' + preview_url
     : ImgNotFound
@@ -28,7 +29,12 @@ export const ProductCard: React.FC<TProduct> = ({
       </div>
       <div className={styles.footer}>
         <div className={styles.price}>{getLowestPrice(sizes)}</div>
-        <Button type='button' view='primary' small disabled={disabled}>
+        <Button
+          type='button'
+          view='primary'
+          small
+          disabled={disabled}
+        >
           {disabled ? 'закончилось' : 'выбрать'}
         </Button>
       </div>

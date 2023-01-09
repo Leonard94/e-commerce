@@ -1,0 +1,48 @@
+@import '@styles/variables.scss';
+@import '@styles/typography.scss';
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  box-sizing: border-box;
+  z-index: 1;
+
+  display: flex;
+  justify-content: end;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.body {
+  position: relative;
+  width: 400px;
+  height: 100vh;
+  background: $color-background-main;
+
+  &_small {
+    width: 400px;
+  }
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: rotate(45deg);
+  }
+}
