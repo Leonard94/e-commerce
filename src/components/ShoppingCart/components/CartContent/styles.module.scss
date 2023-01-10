@@ -15,6 +15,11 @@
   height: 100%;
   padding: 20px 15px;
   overflow: auto;
+  min-height: 150px;
+}
+
+.items li:not(:last-child){
+  margin-bottom: 15px;
 }
 
 .footer {

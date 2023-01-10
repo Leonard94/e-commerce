@@ -25,6 +25,22 @@ const DATA = {
         fk_product_id: 1,
       },
     },
+    {
+      product_id: 2,
+      title: 'Гавайская',
+      composition:
+        'Бекон, сыры чеддер и пармезан, моцарелла, томаты, соус альфредо, красный лук, чеснок, итальянские травы',
+      disabled: false,
+      category_title: 'пицца',
+      preview_url: 'carbonara-preview.webp',
+      size: {
+        size_id: 1,
+        size_name: 'маленькая',
+        weight: '420 г',
+        price: '489.00',
+        fk_product_id: 1,
+      },
+    },
   ],
   total: '12323',
 }

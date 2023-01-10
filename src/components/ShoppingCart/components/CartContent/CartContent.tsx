@@ -21,7 +21,7 @@ export const CartContent = ({ items, total }: any) => {
         </ul>
       </div>
       <div className={styles.footer}>
-        <div className={styles.total}>Сумма заказа: 10000 руб.</div>
+        <div className={styles.total}>Сумма заказа: 10 000 руб.</div>
         <Button type='button' view='rectangle' full>
           Оформить заказ
         </Button>

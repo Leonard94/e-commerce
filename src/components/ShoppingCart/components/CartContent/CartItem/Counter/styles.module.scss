@@ -1,0 +1,31 @@
+@import '@styles/typography';
+@import '@styles/variables';
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    color: $color-background-main;
+    width: 22px;
+    height: 22px;
+    background: $color-accent-main;
+
+    &:disabled {
+      background: $color-background-dark;
+    }
+  }
+}
+
+.count {
+  @include productDescription;
+}
+
+.decrement {
+  border-radius: 3px 0px 0px 3px;
+}
+
+.increment {
+  border-radius: 0px 3px 3px 0px;
+}

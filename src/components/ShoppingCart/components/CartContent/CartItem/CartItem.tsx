@@ -1,3 +1,6 @@
+import { Counter } from './Counter/Counter'
+
+import * as Icon from '@assets/icons/index'
 import styles from './styles.module.scss'
 
 const title = 'Пепперони'
@@ -10,12 +13,17 @@ const total = '899'
 export const CartItem = () => {
   return (
     <li className={styles.item}>
-      <div className={styles.title}>{title}</div>
+      <div className={styles.row}>
+        <div className={styles.title}>{title}</div>
+        <span className={styles.close}>
+          <Icon.Close />
+        </span>
+      </div>
       <div className={styles.size}>{size}</div>
       <div className={styles.composition}>{composition}</div>
       <div className={styles.row}>
-        <div className={styles.total}>{total}</div>
-        <div className={styles.counter}>{count}</div>
+        <div className={styles.total}>{total} руб.</div>
+        <Counter count={count} />
       </div>
     </li>
   )

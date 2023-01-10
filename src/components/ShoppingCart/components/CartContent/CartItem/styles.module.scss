@@ -1,0 +1,54 @@
+@import '@styles/typography';
+@import '@styles/variables';
+
+.item {
+  padding: 12px;
+  border-radius: 10px;
+  background: $color-background-light;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: 100%;
+
+    path {
+      stroke: $color-background-dark;
+      stroke: $color-text-light;
+    }
+  }
+}
+
+.title {
+  @include productName;
+
+  margin-bottom: 8px;
+}
+
+.size {
+  @include productDescription;
+  color: #afafaf;
+
+  margin-bottom: 8px;
+}
+
+.composition {
+  @include productDescription;
+  color: #afafaf;
+
+  margin-bottom: 12px;
+}
+
+.total {
+  @include productDescription;
+}
