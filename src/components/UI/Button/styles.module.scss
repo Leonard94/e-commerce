@@ -51,6 +51,36 @@
   }
 }
 
+.rectangle {
+  color: $color-background-main;
+  background: $color-accent-main;
+  border-radius: 0;
+
+  &:hover {
+    background: $color-accent-light;
+  }
+
+  &:disabled {
+    background: $color-background-dark;
+    cursor: default;
+
+    &:hover {
+      background: $color-background-dark;
+    }
+    &:active {
+      background: $color-background-dark;
+    }
+  }
+
+  &:focus {
+    // !todo
+  }
+
+  &:active {
+    background: $color-accent-dark;
+  }
+}
+
 .secondary {
   color: $color-accent-main;
   border: 1px solid $color-accent-main;

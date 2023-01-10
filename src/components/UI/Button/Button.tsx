@@ -5,7 +5,7 @@ import styles from './styles.module.scss'
 
 type TProps = {
   children: React.ReactNode
-  view: 'primary' | 'secondary'
+  view: 'primary' | 'secondary' | 'rectangle'
   type: 'button' | 'submit'
   onClick?: () => void
   full?: boolean
@@ -29,7 +29,7 @@ export const Button: React.FC<TProps> = (props) => {
   }
 
   const btnClass = classnames(styles.btn, {
-    [styles[view]]: type,
+    [styles[view]]: view,
     [styles.btn_full]: full,
     [styles.btn_small]: small,
   })
