@@ -10,10 +10,16 @@
     color: $color-background-main;
     width: 22px;
     height: 22px;
-    background: $color-accent-main;
+    background: $color-accent-light;
+    transition: all 0.3s ease;
 
-    &:disabled {
-      background: $color-background-dark;
+    &:hover {
+      background: $color-accent-main;
+    }
+
+    &:active {
+      transform: scale(0.9);
+      background: $color-accent-dark;
     }
   }
 }

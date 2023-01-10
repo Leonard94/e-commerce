@@ -1,0 +1,48 @@
+@import '@styles/typography';
+@import '@styles/variables';
+
+.body {
+  display: grid;
+  grid-template-columns: 400px 400px;
+}
+
+.photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+
+  img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 30px;
+  border-radius: 0 20px 20px 0;
+  background: $color-background-light;
+}
+
+.info {
+}
+
+.title {
+  @include productName;
+
+  margin-bottom: 10px;
+}
+
+.size {
+  @include productDescription;
+  margin-bottom: 10px;
+}
+
+.composition {
+  @include productDescription;
+  margin-bottom: 10px;
+}

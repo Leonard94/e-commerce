@@ -12,14 +12,14 @@ export const ProductCard: React.FC<TProduct> = ({
   sizes,
   preview_url,
   disabled,
+  toggleProductModal,
 }) => {
-
   const productImg = preview_url
     ? process.env.REACT_APP_PRODUCT_URL + '/' + preview_url
     : ImgNotFound
 
   return (
-    <article className={styles.body}>
+    <article className={styles.body} onClick={toggleProductModal}>
       <div className={styles.main}>
         <div className={styles.photo}>
           <img src={productImg} alt={title} />
@@ -29,12 +29,7 @@ export const ProductCard: React.FC<TProduct> = ({
       </div>
       <div className={styles.footer}>
         <div className={styles.price}>{getLowestPrice(sizes)}</div>
-        <Button
-          type='button'
-          view='primary'
-          small
-          disabled={disabled}
-        >
+        <Button type='button' view='primary' small disabled={disabled}>
           {disabled ? 'закончилось' : 'выбрать'}
         </Button>
       </div>

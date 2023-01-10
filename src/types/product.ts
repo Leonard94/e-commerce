@@ -13,6 +13,7 @@ export type TProduct = {
   sizes: TSize[]
   disabled: boolean
   preview_url: string
+  toggleProductModal: () => void
 }
 
 type TSize = {

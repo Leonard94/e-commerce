@@ -35,4 +35,24 @@
   transition: opacity 300ms ease-out, transform 300ms ease-out;
 }
 
+.centerEnter {
+  opacity: 0;
+  transform: scale(0.01);
+}
 
+.centerEnterActive {
+  transition: opacity 100ms ease-out 200ms, transform 100ms ease-out 200ms;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.centerExit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.centerExitActive {
+  opacity: 0;
+  transform: scale(0.01);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}

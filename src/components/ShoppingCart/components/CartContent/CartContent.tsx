@@ -15,7 +15,7 @@ export const CartContent = ({ items, total }: any) => {
       </div>
       <div className={styles.content}>
         <ul className={styles.items}>
-          {items.map((item: any, index: number) => (
+          {items.map((_:any, index: number) => (
             <CartItem key={index} />
           ))}
         </ul>

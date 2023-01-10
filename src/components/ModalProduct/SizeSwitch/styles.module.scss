@@ -1,0 +1,22 @@
+@import '@styles/typography';
+@import '@styles/variables';
+
+.switch {
+  display: flex;
+  justify-content: space-between;
+
+  border-radius: 20px;
+  background: #ebebeb;
+
+  span {
+    cursor: pointer;
+    color: #afafaf;
+    padding: 5px;
+    border-radius: 20px;
+    border-width: 1px;
+  }
+}
+
+.active {
+  border: 1px solid $color-accent-main;
+}

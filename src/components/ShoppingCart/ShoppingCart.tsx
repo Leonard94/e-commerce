@@ -56,7 +56,7 @@ export const ShoppingCart = () => {
         Корзина
         {items.length > 0 && <span> | {items.length}</span>}
       </Button>
-      <Modal isOpen={isOpenModal} onClose={() => setOpenModal(false)}>
+      <Modal type='drawer' isOpen={isOpenModal} onClose={() => setOpenModal(false)}>
         {items.length ? (
           <CartContent items={items} total={total} />
         ) : (
