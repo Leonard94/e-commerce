@@ -1,3 +1,9 @@
+export type TInitialState = {
+  productsList: TCategory[]
+  status: 'pending' | 'fulfilled' | 'error' 
+  error: null | string
+}
+
 export type TCategory = {
   category_id: number
   category_code: string

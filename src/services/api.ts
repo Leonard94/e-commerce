@@ -1,10 +1,21 @@
 import axios from 'axios'
 
-const URL = process.env.REACT_APP_API_URL
+export const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+})
 
-const get = (url: string) => axios.get(url)
+api.interceptors.request.use((config: any) => {
+  const token = localStorage.getItem('token')
 
-export const getAllProducts = async () => {
-  const response = await get(`${URL}/products`)
-  return response.data
-}
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
+
+// const get = (url: string) => axios.get(url)
+
+// export const getAllProducts = async () => {
+//   const response = await get(`${URL}/products`)
+//   return response.data
+// }

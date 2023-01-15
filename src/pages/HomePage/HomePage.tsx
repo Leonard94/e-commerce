@@ -1,20 +1,21 @@
-import { useState, useEffect } from 'react'
-import { TCategory } from 'src/types/product'
+import { useEffect } from 'react'
 
-import { getAllProducts } from '../../services/api'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { fetchProducts } from '@store/productsSlice'
 
 import { Banner } from './components/Banner/Banner'
 import { Products } from './components/Products/Products'
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<TCategory[]>([])
-  const [status, setStatus] = useState('pending')
+  const dispatch = useAppDispatch()
+
+  const { productsList, status, error } = useAppSelector(
+    (state) => state.products
+  )
 
   useEffect(() => {
-    getAllProducts()
-      .then((resp) => setProducts(resp))
-      .finally(() => setStatus('fulfilled'))
-  }, [])
+    dispatch(fetchProducts())
+  }, [dispatch])
 
   return (
     <>
@@ -22,7 +23,8 @@ export const HomePage = () => {
         <Banner />
         <main>
           {status === 'pending' && <div>Skeleton</div>}
-          {status === 'fulfilled' && <Products productsList={products} />}
+          {status === 'error' && <div>Error: {error}</div>}
+          {status === 'fulfilled' && <Products productsList={productsList} />}
         </main>
       </div>
     </>
