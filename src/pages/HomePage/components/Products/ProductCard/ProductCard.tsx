@@ -7,19 +7,23 @@ import ImgNotFound from '@assets/icons/img-not-found.svg'
 import styles from './styles.module.scss'
 
 export const ProductCard: React.FC<TProduct> = ({
+  product_id,
   title,
   composition,
   sizes,
   preview_url,
   disabled,
-  toggleProductModal,
+  openProductModal,
 }) => {
   const productImg = preview_url
     ? process.env.REACT_APP_PRODUCT_URL + '/' + preview_url
     : ImgNotFound
 
   return (
-    <article className={styles.body} onClick={toggleProductModal}>
+    <article
+      className={styles.body}
+      onClick={() => openProductModal(product_id)}
+    >
       <div className={styles.main}>
         <div className={styles.photo}>
           <img src={productImg} alt={title} />

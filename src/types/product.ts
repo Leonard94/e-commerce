@@ -1,6 +1,6 @@
 export type TInitialState = {
   productsList: TCategory[]
-  status: 'pending' | 'fulfilled' | 'error' 
+  status: 'pending' | 'fulfilled' | 'error'
   error: null | string
 }
 
@@ -19,7 +19,7 @@ export type TProduct = {
   sizes: TSize[]
   disabled: boolean
   preview_url: string
-  toggleProductModal: () => void
+  openProductModal: (product_id: number) => void
 }
 
 type TSize = {

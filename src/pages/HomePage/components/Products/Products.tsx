@@ -1,9 +1,9 @@
-import { Modal } from '@components/Modal/Modal'
-import { ModalProduct } from '@components/ModalProduct/ModalProduct'
-import { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { TCategory, TProduct } from 'src/types/product'
 
+import { Modal } from '@components/Modal/Modal'
+import { ModalProduct } from '@components/ModalProduct/ModalProduct'
 import { ProductCard } from './ProductCard/ProductCard'
 
 import styles from './styles.module.scss'
@@ -13,10 +13,15 @@ type TProps = {
 }
 
 export const Products: React.FC<TProps> = ({ productsList }) => {
-  const [isOpenProductModal, setOpenProductModal] = useState(false)
+  const params = useParams()
+  const navigate = useNavigate()
 
-  const toggleProductModal = () => {
-    setOpenProductModal(!isOpenProductModal)
+  const openProductModal = (productId: number) => {
+    navigate(`/products/${productId}`)
+  }
+
+  const goBack = () => {
+    navigate('/')
   }
 
   return (
@@ -29,17 +34,13 @@ export const Products: React.FC<TProps> = ({ productsList }) => {
               <ProductCard
                 key={product.product_id}
                 {...product}
-                toggleProductModal={toggleProductModal}
+                openProductModal={openProductModal}
               />
             ))}
           </div>
         </section>
       ))}
-      <Modal
-        type='center'
-        isOpen={isOpenProductModal}
-        onClose={toggleProductModal}
-      >
+      <Modal isOpen={Boolean(params.product_id)} onClose={goBack} type='center'>
         <ModalProduct />
       </Modal>
     </>
