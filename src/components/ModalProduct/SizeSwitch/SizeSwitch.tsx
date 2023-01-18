@@ -1,29 +1,32 @@
-import { useState } from 'react'
+import { TSize } from '../../../types/product'
 
 import styles from './styles.module.scss'
 
-const options = ['Маленькая', 'Средняя', 'Большая']
+type TProps = {
+  sizes: TSize[]
+  currentSize: number
+  setCurrentSize: (size: number) => void
+}
 
-export const SizeSwitch = () => {
-  const [activeOption, setActiveOption] = useState(options[0])
-
-  const handleClick = (option: string) => {
-    setActiveOption(option)
+export const SizeSwitch: React.FC<TProps> = ({
+  sizes,
+  currentSize,
+  setCurrentSize,
+}) => {
+  if (sizes.length === 1) {
+    return null
   }
-
-  console.log('activeOption =>> ', activeOption)
-
   return (
     <div className={styles.switch}>
-      {options.map((option) => {
-        const className = option === activeOption ? styles.active : ''
+      {sizes.map((size, index) => {
+        const className = index === currentSize ? styles.active : ''
         return (
           <span
-            key={option}
+            key={index}
             className={className}
-            onClick={() => handleClick(option)}
+            onClick={() => setCurrentSize(index)}
           >
-            {option}
+            {size.size_name}, {size.weight}
           </span>
         )
       })}

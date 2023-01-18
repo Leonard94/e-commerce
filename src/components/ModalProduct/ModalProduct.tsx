@@ -1,32 +1,55 @@
+import { useEffect, useState } from 'react'
+
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { setOpenProduct } from '@store/productsSlice'
+
 import { Button } from '@components/UI/Button/Button'
+import { ProductPhoto } from './ProductPhoto/ProductPhoto'
+import { SizeInfo } from './SizeInfo/SizeInfo'
 import { SizeSwitch } from './SizeSwitch/SizeSwitch'
 
 import styles from './styles.module.scss'
 
-const title = 'Пепперони'
-const size = '30 см, 580 г'
-const composition =
-  'Томатный соус, колбаски пепперони, моцарелла, цыпленок, соус бургер, томаты, сладкий перец, лук красный, чеснок, соус ранч'
-const price = '799'
+type TProps = {
+  product_id: number
+}
 
-export const ModalProduct = () => {
+export const ModalProduct: React.FC<TProps> = ({ product_id }) => {
+  const dispatch = useAppDispatch()
+  const product = useAppSelector((state) => state.products.openProduct)
+
+  const [currentSize, setCurrentSize] = useState(0)
+
+  const addTheProductToCart = () => {
+    // const data = {}
+    // dispatch(addToCart(data))
+  }
+
+  useEffect(() => {
+    dispatch(setOpenProduct(product_id))
+  }, [product_id, dispatch])
+
+  if (!product) {
+    return null
+  }
   return (
     <div className={styles.body}>
-      <div className={styles.photo}>
-        <img
-          src='http://localhost:4000/static/products/pepperoni-preview.webp'
-          alt=''
-        />
-      </div>
+      <ProductPhoto title={product.title} preview_url={product.preview_url} />
       <div className={styles.product}>
         <div className={styles.info}>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.size}>{size}</div>
-          <div className={styles.composition}>{composition}</div>
-          <SizeSwitch />
+          <div className={styles.title}>{product.title}</div>
+          <SizeInfo size={product.sizes[currentSize]} />
+          {product.composition && (
+            <div className={styles.composition}>{product.composition}</div>
+          )}
+          <SizeSwitch
+            sizes={product.sizes}
+            currentSize={currentSize}
+            setCurrentSize={setCurrentSize}
+          />
         </div>
-        <Button type='button' view='primary'>
-          Добавить в корзину за {price} руб.
+        <Button type='button' view='primary' small>
+          Добавить в корзину за {product.sizes[currentSize].price} руб.
         </Button>
       </div>
     </div>

@@ -16,8 +16,8 @@ export const Products: React.FC<TProps> = ({ productsList }) => {
   const params = useParams()
   const navigate = useNavigate()
 
-  const openProductModal = (productId: number) => {
-    navigate(`/products/${productId}`)
+  const openProductModal = (product_id: number) => {
+    navigate(`/products/${product_id}`)
   }
 
   const goBack = () => {
@@ -40,8 +40,9 @@ export const Products: React.FC<TProps> = ({ productsList }) => {
           </div>
         </section>
       ))}
+      {/* Проверять наличие такого id, иначе не открывать */}
       <Modal isOpen={Boolean(params.product_id)} onClose={goBack} type='center'>
-        <ModalProduct />
+        <ModalProduct product_id={Number(params.product_id)}/>
       </Modal>
     </>
   )

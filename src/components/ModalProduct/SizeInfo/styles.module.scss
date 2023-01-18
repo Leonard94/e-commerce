@@ -1,0 +1,11 @@
+@import '@styles/typography';
+@import '@styles/variables';
+
+.size {
+  @include productDescription;
+  margin-bottom: 10px;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
+}

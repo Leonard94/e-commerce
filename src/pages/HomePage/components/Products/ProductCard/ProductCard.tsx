@@ -24,7 +24,7 @@ export const ProductCard: React.FC<TProduct> = ({
       className={styles.body}
       onClick={() => openProductModal(product_id)}
     >
-      <div className={styles.main}>
+      <div>
         <div className={styles.photo}>
           <img src={productImg} alt={title} />
         </div>

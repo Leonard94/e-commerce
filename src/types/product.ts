@@ -1,7 +1,8 @@
 export type TInitialState = {
   productsList: TCategory[]
   status: 'pending' | 'fulfilled' | 'error'
-  error: null | string
+  error: null | string 
+  openProduct: null | TProduct
 }
 
 export type TCategory = {
@@ -22,7 +23,7 @@ export type TProduct = {
   openProductModal: (product_id: number) => void
 }
 
-type TSize = {
+export type TSize = {
   size_id: number
   size_name: string
   weight: string

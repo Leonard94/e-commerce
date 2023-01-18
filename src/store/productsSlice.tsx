@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { findProductById } from '@utils/findProductById'
 import { api } from '../services/api'
 
 import { TInitialState } from '../types/product'
@@ -15,12 +16,17 @@ const initialState: TInitialState = {
   productsList: [],
   status: 'pending',
   error: null,
+  openProduct: null,
 }
 
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setOpenProduct: (state, { payload }) => {
+      state.openProduct = findProductById(state.productsList, payload)
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
       state.status = 'pending'
@@ -36,4 +42,5 @@ export const productsSlice = createSlice({
   },
 })
 
+export const { setOpenProduct } = productsSlice.actions
 export default productsSlice.reducer
