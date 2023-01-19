@@ -27,6 +27,6 @@ export type TSize = {
   size_id: number
   size_name: string
   weight: string
-  price: string
-  fK_product_id: number
+  price: number
+  fk_product_id: number
 }

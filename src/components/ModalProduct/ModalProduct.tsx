@@ -9,6 +9,7 @@ import { SizeInfo } from './SizeInfo/SizeInfo'
 import { SizeSwitch } from './SizeSwitch/SizeSwitch'
 
 import styles from './styles.module.scss'
+import { addProductToCart } from '@store/cartSlice'
 
 type TProps = {
   product_id: number
@@ -20,9 +21,8 @@ export const ModalProduct: React.FC<TProps> = ({ product_id }) => {
 
   const [currentSize, setCurrentSize] = useState(0)
 
-  const addTheProductToCart = () => {
-    // const data = {}
-    // dispatch(addToCart(data))
+  const handleAddProductToCart = () => {
+    dispatch(addProductToCart({ product, currentSize }))
   }
 
   useEffect(() => {
@@ -48,7 +48,12 @@ export const ModalProduct: React.FC<TProps> = ({ product_id }) => {
             setCurrentSize={setCurrentSize}
           />
         </div>
-        <Button type='button' view='primary' small>
+        <Button
+          type='button'
+          view='primary'
+          small
+          onClick={handleAddProductToCart}
+        >
           Добавить в корзину за {product.sizes[currentSize].price} руб.
         </Button>
       </div>

@@ -33,6 +33,10 @@
   @include productName;
 
   margin-bottom: 8px;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .size {
@@ -40,6 +44,10 @@
   color: #afafaf;
 
   margin-bottom: 8px;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .composition {
@@ -47,6 +55,10 @@
   color: #afafaf;
 
   margin-bottom: 12px;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .total {

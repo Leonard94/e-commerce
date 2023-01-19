@@ -21,6 +21,11 @@
       transform: scale(0.9);
       background: $color-accent-dark;
     }
+
+    &:disabled {
+      background: $color-background-dark;
+      cursor: default;
+    }
   }
 }
 
