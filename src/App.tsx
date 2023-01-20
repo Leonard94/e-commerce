@@ -1,13 +1,17 @@
 import { Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
-import { Header } from '@components/Layouts/Header/Header'
 import { HomePage } from '@pages/HomePage/HomePage'
 import { OrderPage } from '@pages/OrderPage/OrderPage'
+import { Header } from '@components/Layouts/Header/Header'
 import { Footer } from '@components/Layouts/Footer/Footer'
+
+import 'react-toastify/dist/ReactToastify.css'
 
 export const App = () => {
   return (
     <>
+      <ToastContainer autoClose={3000} />
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />

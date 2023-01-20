@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { addProductToCart } from '@store/cartSlice'
 import { setOpenProduct } from '@store/productsSlice'
@@ -24,6 +25,9 @@ export const ModalProduct: React.FC<TProps> = ({ product_id, goBack }) => {
 
   const handleAddProductToCart = () => {
     dispatch(addProductToCart({ product, currentSize }))
+    toast.success(
+      `Добавлено: ${product?.title}, ${product?.sizes[currentSize].size_name}`
+    )
     goBack()
   }
 
