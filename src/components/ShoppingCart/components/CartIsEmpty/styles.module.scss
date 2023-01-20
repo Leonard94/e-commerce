@@ -1,0 +1,23 @@
+@import '@styles/typography.scss';
+
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.inner {
+  padding: 30px;
+  text-align: center;
+}
+
+.title {
+  @include title;
+
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  @include productDescription;
+}

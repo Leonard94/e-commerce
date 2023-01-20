@@ -5,7 +5,7 @@ import { useAppSelector } from '@store/hooks'
 import { Button } from '@components/UI/Button/Button'
 import { Modal } from '@components/Modal/Modal'
 import { CartContent } from './components/CartContent/CartContent'
-import { ItemsNotFound } from './components/ItemsNotFound/ItemsNotFound'
+import { CartIsEmpty } from './components/CartIsEmpty/CartIsEmpty'
 
 export const ShoppingCart = () => {
   const [isOpenModal, setOpenModal] = useState(false)
@@ -22,7 +22,7 @@ export const ShoppingCart = () => {
         isOpen={isOpenModal}
         onClose={() => setOpenModal(false)}
       >
-        {itemsQuantity === 0 ? <ItemsNotFound /> : <CartContent />}
+        {itemsQuantity === 0 ? <CartIsEmpty /> : <CartContent />}
       </Modal>
     </>
   )

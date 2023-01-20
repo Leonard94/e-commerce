@@ -3,7 +3,7 @@ import { TProduct } from '../../../../../types/product'
 
 import { Button } from '@components/UI/Button/Button'
 
-import ImgNotFound from '@assets/icons/img-not-found.svg'
+import ImgNotFound from '@assets/icons/not-found.svg'
 import styles from './styles.module.scss'
 
 export const ProductCard: React.FC<TProduct> = ({
