@@ -42,7 +42,7 @@ export const Products: React.FC<TProps> = ({ productsList }) => {
       ))}
       {/* Проверять наличие такого id, иначе не открывать */}
       <Modal isOpen={Boolean(params.product_id)} onClose={goBack} type='center'>
-        <ModalProduct product_id={Number(params.product_id)}/>
+        <ModalProduct product_id={Number(params.product_id)} goBack={goBack}/>
       </Modal>
     </>
   )

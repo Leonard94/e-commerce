@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
+import { useAppSelector } from '@store/hooks'
+
 import { Button } from '@components/UI/Button/Button'
 import { Modal } from '@components/Modal/Modal'
 import { CartContent } from './components/CartContent/CartContent'
 import { ItemsNotFound } from './components/ItemsNotFound/ItemsNotFound'
-
-import { useAppSelector } from '@store/hooks'
 
 export const ShoppingCart = () => {
   const [isOpenModal, setOpenModal] = useState(false)

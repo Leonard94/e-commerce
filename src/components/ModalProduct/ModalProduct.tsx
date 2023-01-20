@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 
-import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { addProductToCart } from '@store/cartSlice'
 import { setOpenProduct } from '@store/productsSlice'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
 
 import { Button } from '@components/UI/Button/Button'
 import { ProductPhoto } from './ProductPhoto/ProductPhoto'
@@ -9,13 +10,13 @@ import { SizeInfo } from './SizeInfo/SizeInfo'
 import { SizeSwitch } from './SizeSwitch/SizeSwitch'
 
 import styles from './styles.module.scss'
-import { addProductToCart } from '@store/cartSlice'
 
 type TProps = {
   product_id: number
+  goBack: () => void
 }
 
-export const ModalProduct: React.FC<TProps> = ({ product_id }) => {
+export const ModalProduct: React.FC<TProps> = ({ product_id, goBack }) => {
   const dispatch = useAppDispatch()
   const product = useAppSelector((state) => state.products.openProduct)
 
@@ -23,6 +24,7 @@ export const ModalProduct: React.FC<TProps> = ({ product_id }) => {
 
   const handleAddProductToCart = () => {
     dispatch(addProductToCart({ product, currentSize }))
+    goBack()
   }
 
   useEffect(() => {

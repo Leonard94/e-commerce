@@ -4,7 +4,7 @@ import { TInitialStateCart } from '../types/cart'
 
 const initialState: TInitialStateCart = {
   cartProductsList: [],
-  cartTotal: 7777,
+  cartTotal: 0,
   itemsQuantity: 0,
 }
 
@@ -23,10 +23,14 @@ export const productsSlice = createSlice({
         const data = { ...rest, ...sizes[payload.currentSize] }
         data.quantity = 1
         data.totalPrice = data.price
+        state.cartTotal += data.price
 
         state.cartProductsList.push(data)
       } else {
-        state.cartProductsList[alreadyHaveThisSize].quantity += 1
+        const product = state.cartProductsList[alreadyHaveThisSize]
+        product.quantity += 1
+        product.totalPrice += product.price
+        state.cartTotal += product.price
       }
       state.itemsQuantity += 1
     },
@@ -36,39 +40,31 @@ export const productsSlice = createSlice({
       state.cartProductsList = state.cartProductsList.filter((product) => {
         if (product.size_id === payload) {
           state.itemsQuantity -= product.quantity
+          state.cartTotal -= product.quantity * product.price
         } else {
           return product
         }
       })
-
-      productsSlice.caseReducers.updateTotal(state)
     },
     incrementQuantity: (state, { payload }) => {
       state.cartProductsList.forEach((product) => {
         if (product.size_id === payload) {
           product.quantity += 1
+          state.itemsQuantity += 1
+          product.totalPrice += product.price
+          state.cartTotal += product.price
         }
       })
-      state.itemsQuantity += 1
-      productsSlice.caseReducers.updateTotal(state)
     },
     decrementQuantity: (state, { payload }) => {
       state.cartProductsList.forEach((product) => {
         if (product.size_id === payload) {
           product.quantity -= 1
+          state.itemsQuantity -= 1
           product.totalPrice -= product.price
+          state.cartTotal -= product.price
         }
       })
-      state.itemsQuantity -= 1
-      productsSlice.caseReducers.updateTotal(state)
-    },
-    updateTotal: (state) => {
-      console.log('Считаем сумму')
-      //! const newTotal = state.cartProductsList.reduce(
-      //   (acc, product) => acc + product.cartTotal,
-      //   0
-      // )
-      state.cartTotal = 123123
     },
   },
 })
