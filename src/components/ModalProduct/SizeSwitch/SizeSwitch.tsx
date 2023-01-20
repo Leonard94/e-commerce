@@ -1,3 +1,7 @@
+import { useMemo } from 'react'
+
+import { calculateSliderPosition, calculateWidth } from '@utils/switchLayout'
+
 import { TSize } from '../../../types/product'
 
 import styles from './styles.module.scss'
@@ -13,23 +17,27 @@ export const SizeSwitch: React.FC<TProps> = ({
   currentSize,
   setCurrentSize,
 }) => {
+  const width = useMemo(() => calculateWidth(sizes.length), [sizes])
+
   if (sizes.length === 1) {
     return null
   }
   return (
-    <div className={styles.switch}>
+    <ul className={styles.switch}>
       {sizes.map((size, index) => {
-        const className = index === currentSize ? styles.active : ''
         return (
-          <span
-            key={index}
-            className={className}
-            onClick={() => setCurrentSize(index)}
-          >
-            {size.size_name}, {size.weight}
-          </span>
+          <li key={index} style={{ width: width }}>
+            <span onClick={() => setCurrentSize(index)}>{size.size_name}</span>
+          </li>
         )
       })}
-    </div>
+      <li
+        className={styles.slider}
+        style={{
+          width: width,
+          left: calculateSliderPosition(currentSize, sizes.length),
+        }}
+      />
+    </ul>
   )
 }
