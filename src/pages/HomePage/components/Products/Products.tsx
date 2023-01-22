@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { TCategory, TProduct } from 'src/types/product'
 
 import { Modal } from '@components/Modal/Modal'
-import { ModalProduct } from '@components/ModalProduct/ModalProduct'
+import { ProductDetail } from './ProductDetail/ProductDetail'
 import { ProductCard } from './ProductCard/ProductCard'
 
 import styles from './styles.module.scss'
@@ -42,7 +42,7 @@ export const Products: React.FC<TProps> = ({ productsList }) => {
       ))}
       {/* Проверять наличие такого id, иначе не открывать */}
       <Modal isOpen={Boolean(params.product_id)} onClose={goBack} type='center'>
-        <ModalProduct product_id={Number(params.product_id)} goBack={goBack}/>
+        <ProductDetail product_id={Number(params.product_id)} goBack={goBack}/>
       </Modal>
     </>
   )

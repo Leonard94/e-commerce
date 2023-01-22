@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 
 import { calculateSliderPosition, calculateWidth } from '@utils/switchLayout'
 
-import { TSize } from '../../../types/product'
+import { TSize } from '@type/product'
 
 import styles from './styles.module.scss'
 

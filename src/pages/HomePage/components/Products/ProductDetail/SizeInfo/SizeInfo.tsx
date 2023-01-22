@@ -1,4 +1,4 @@
-import { TSize } from '../../../types/product'
+import { TSize } from '@type/product'
 
 import styles from './styles.module.scss'
 

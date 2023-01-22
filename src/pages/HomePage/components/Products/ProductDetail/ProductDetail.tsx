@@ -17,7 +17,7 @@ type TProps = {
   goBack: () => void
 }
 
-export const ModalProduct: React.FC<TProps> = ({ product_id, goBack }) => {
+export const ProductDetail: React.FC<TProps> = ({ product_id, goBack }) => {
   const dispatch = useAppDispatch()
   const product = useAppSelector((state) => state.products.openProduct)
 
