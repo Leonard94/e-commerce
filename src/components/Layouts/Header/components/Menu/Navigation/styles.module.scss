@@ -9,7 +9,10 @@
 .link {
   @include menu;
 
-  padding: 10px 25px;
+  &:not(:last-child) {
+    background: red;
+  }
+  margin-right: 30px;
 
   &_active {
     color: $color-accent-main;

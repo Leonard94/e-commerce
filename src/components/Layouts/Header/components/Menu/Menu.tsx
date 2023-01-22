@@ -1,12 +1,11 @@
 import { ShoppingCart } from '@components/ShoppingCart/ShoppingCart'
-import { UserProfile } from '@components/UserProfile/UserProfile'
-
+import { Navigation } from './Navigation/Navigation'
 import styles from './styles.module.scss'
 
-export const CartProfileHeader = () => {
+export const Menu = () => {
   return (
     <div className={styles.body}>
-      <UserProfile />
+      <Navigation />
       <ShoppingCart />
     </div>
   )

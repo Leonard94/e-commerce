@@ -11,6 +11,21 @@ export const Navigation = () => {
     <nav>
       <ul className={styles.menu_list}>
         <li>
+          <NavLink to='/#pizza' className={styles.link}>
+            Пицца
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/#drink' className={styles.link}>
+            Напитки
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='#sauce' className={styles.link}>
+            Соусы
+          </NavLink>
+        </li>
+        <li>
           <NavLink to='promo' className={linkClass}>
             Акции
           </NavLink>

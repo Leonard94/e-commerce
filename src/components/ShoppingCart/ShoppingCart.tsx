@@ -13,7 +13,12 @@ export const ShoppingCart = () => {
 
   return (
     <>
-      <Button type='button' view='primary' onClick={() => setOpenModal(true)}>
+      <Button
+        type='button'
+        view='primary'
+        small
+        onClick={() => setOpenModal(true)}
+      >
         Корзина
         {itemsQuantity > 0 && <span> | {itemsQuantity}</span>}
       </Button>

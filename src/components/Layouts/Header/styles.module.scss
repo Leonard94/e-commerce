@@ -1,6 +1,25 @@
+@import '@styles/variables';
+
+.header {
+  position: relative;
+  z-index: 1;
+  background: $color-background-main;
+}
+
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 90px;
+  height: 60px;
+}
+
+.menu {
+  position: sticky;
+  top: 0;
+  margin-bottom: 20px;
+  z-index: 1;
+
+  box-shadow: rgb(6 5 50 / 5%) 0px 4px 30px;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
 }
