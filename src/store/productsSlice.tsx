@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { findProductById } from '@utils/findProductById'
 import { api } from '../services/api'
 
-import { TInitialState } from '../types/product'
+import { TInitialState } from '@type/product'
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',

@@ -1,4 +1,4 @@
-import { TCategory } from '../types/product'
+import { TCategory } from '@type/product'
 
 export const findProductById = (productList: TCategory[], product_id: number) => {
   for (let i = 0; i < productList.length; i++) {

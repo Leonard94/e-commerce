@@ -1,6 +1,6 @@
 import { Counter } from './Counter/Counter'
 
-import { TCartProduct } from '../../../../../types/cart'
+import { TCartProduct } from '@type/cart'
 
 import * as Icon from '@assets/icons/index'
 import styles from './styles.module.scss'

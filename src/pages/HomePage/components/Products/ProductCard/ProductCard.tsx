@@ -1,5 +1,5 @@
 import { getLowestPrice } from '@utils/getLowestPrice'
-import { TProduct } from '../../../../../types/product'
+import { TProduct } from '@type/product'
 
 import { Button } from '@components/UI/Button/Button'
 
