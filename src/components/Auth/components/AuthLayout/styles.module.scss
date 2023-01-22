@@ -1,0 +1,50 @@
+@import '@styles/typography';
+@import '@styles/variables';
+
+.body {
+  width: 400px;
+  padding: 30px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.children {
+  margin-bottom: 20px;
+
+  form div:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+.title {
+  @include title;
+
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  @include productDescription;
+}
+
+.extra {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 120%;
+  text-align: center;
+
+  margin-top: 20px;
+
+  span {
+    padding-left: 4px;
+    cursor: pointer;
+
+    color: $color-accent-main;
+    font-weight: 400;
+
+    &:hover {
+      color: $color-accent-light;
+    }
+  }
+}

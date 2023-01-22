@@ -56,3 +56,11 @@
   line-height: 140%;
 }
 
+@mixin label {
+  font-family: 'Nunito';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 100%;
+  color: $color-text-light;
+}
+
