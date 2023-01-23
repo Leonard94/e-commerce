@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { validateRegisterForm } from '@utils/validation/validationAuth'
+import { TErrors } from '@type/auth'
+
 import { Input } from '@components/UI/Input/Input'
 import { Button } from '@components/UI/Button/Button'
 
@@ -11,10 +14,7 @@ export const Register = () => {
     confirmPassword: '',
   })
 
-  const [errorFirstName, setErrorFirstName] = useState<null | string>(null)
-  const [errorEmail, setErrorEmail] = useState(null)
-  const [errorPassword, setErrorPassword] = useState(null)
-  const [errorConfirmPassword, setErrorConfirmPassword] = useState(null)
+  const [errors, setErrors] = useState<TErrors>({})
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValues({
@@ -23,8 +23,20 @@ export const Register = () => {
     })
   }
 
-  const handleSubmit = () => {
-    console.log('Register without validation')
+  const handleOnFocus = (e: any) => {
+    setErrors({ ...errors, [e.target.name]: undefined })
+  }
+
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+
+    const formErrors = validateRegisterForm(values)
+
+    if (Object.keys(formErrors).length) {
+      setErrors({ ...formErrors })
+    } else {
+      console.log('Отправляем запрос на регистрацию')
+    }
   }
 
   return (
@@ -36,18 +48,18 @@ export const Register = () => {
         type='text'
         value={values.firstName}
         onChange={handleInput}
-        error={errorFirstName}
-        onFocus={() => setErrorFirstName(null)}
+        error={errors.firstName}
+        onFocus={handleOnFocus}
       />
       <Input
         label='Электронная почта'
         name='email'
-        placeholder='mail@mail.com'
+        placeholder='email@mail.com'
         type='text'
         value={values.email}
         onChange={handleInput}
-        error={errorEmail}
-        onFocus={() => setErrorEmail(null)}
+        error={errors.email}
+        onFocus={handleOnFocus}
       />
       <Input
         label='Пароль'
@@ -56,8 +68,8 @@ export const Register = () => {
         type='password'
         value={values.password}
         onChange={handleInput}
-        error={errorPassword}
-        onFocus={() => setErrorPassword(null)}
+        error={errors.password}
+        onFocus={handleOnFocus}
       />
       <Input
         label='Подтвердите пароль'
@@ -66,8 +78,8 @@ export const Register = () => {
         type='password'
         value={values.confirmPassword}
         onChange={handleInput}
-        error={errorConfirmPassword}
-        onFocus={() => setErrorConfirmPassword(null)}
+        error={errors.confirmPassword}
+        onFocus={handleOnFocus}
       />
       {/* <ErrorMessage error={error} /> */}
       <Button type='submit' view='primary' full>

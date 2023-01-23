@@ -11,7 +11,7 @@ type TProps = {
   placeholder?: string
   label?: string
   error?: string | null
-  onFocus?: () => void
+  onFocus?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Input: React.FC<TProps> = (props) => {
