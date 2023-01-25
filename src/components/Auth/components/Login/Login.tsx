@@ -1,29 +1,14 @@
-import { useState } from 'react'
-
 import { validateLoginForm } from '@utils/validation/validationAuth'
-import { TErrors } from '@type/auth'
+import { useForm } from '../../useForm'
 
 import { Input } from '@components/UI/Input/Input'
 import { Button } from '@components/UI/Button/Button'
 
 export const Login = () => {
-  const [values, setValues] = useState({
+  const { values, errors, handleInput, setErrors, handleOnFocus } = useForm({
     email: '',
     password: '',
   })
-
-  const [errors, setErrors] = useState<TErrors>({})
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleOnFocus = (e: any) => {
-    setErrors({ ...errors, [e.target.name]: undefined })
-  }
 
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -33,7 +18,7 @@ export const Login = () => {
     if (Object.keys(formErrors).length) {
       setErrors({ ...formErrors })
     } else {
-      console.log('Отправляем запрос на вход')
+      console.log('Отправляем запрос на вход =>', values)
     }
   }
 
