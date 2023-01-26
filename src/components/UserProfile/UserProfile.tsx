@@ -5,17 +5,21 @@ import { getFirstLetterName } from '@utils/getFirstLetterName'
 
 import { Button } from '@components/UI/Button/Button'
 import { Modal } from '@components/Modal/Modal'
+import { Auth } from '@components/Auth/Auth'
 
 import styles from './styles.module.scss'
-import { Auth } from '@components/Auth/Auth'
 
 export const UserProfile = () => {
   const first_name = null
   const second_name = null
 
+  const { isAuth } = useAppSelector((state) => state.user)
+
   const [isOpenModal, setOpenModal] = useState(false)
 
-  const { isAuth } = useAppSelector((state) => state.user)
+  const toggleModal = () => {
+    setOpenModal(!isOpenModal)
+  }
 
   return (
     <>
@@ -33,12 +37,8 @@ export const UserProfile = () => {
           Войти
         </Button>
       )}
-      <Modal
-        isOpen={isOpenModal}
-        onClose={() => setOpenModal(false)}
-        type='center'
-      >
-        <Auth />
+      <Modal isOpen={isOpenModal} onClose={toggleModal} type='center'>
+        <Auth onClose={toggleModal} />
       </Modal>
     </>
   )

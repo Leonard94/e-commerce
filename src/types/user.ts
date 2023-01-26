@@ -1,6 +1,10 @@
+import { TError, TStatus } from './general'
+
 export type TInitialStateUser = {
   isAuth: Boolean
   userInfo: TUser | null
+  status: TStatus
+  error: TError
 }
 
 export type TAuthMode = 'register' | 'login' | 'confirm'

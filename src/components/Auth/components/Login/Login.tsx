@@ -1,10 +1,20 @@
 import { validateLoginForm } from '@utils/validation/validationAuth'
 import { useForm } from '../../useForm'
 
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { login } from '@store/userSlice'
+
 import { Input } from '@components/UI/Input/Input'
 import { Button } from '@components/UI/Button/Button'
 
-export const Login = () => {
+type TProps = {
+  onClose: () => void
+}
+
+export const Login: React.FC<TProps> = ({ onClose }) => {
+  const dispatch = useAppDispatch()
+  const { error } = useAppSelector((state) => state.user)
+
   const { values, errors, handleInput, setErrors, handleOnFocus } = useForm({
     email: '',
     password: '',
@@ -18,7 +28,9 @@ export const Login = () => {
     if (Object.keys(formErrors).length) {
       setErrors({ ...formErrors })
     } else {
-      console.log('Отправляем запрос на вход =>', values)
+      dispatch(login(values)).then((resp) => {
+        if (resp.payload) onClose()
+      })
     }
   }
 
@@ -41,9 +53,10 @@ export const Login = () => {
         type='password'
         value={values.password}
         onChange={handleInput}
-        error={errors.email}
+        error={errors.password}
         onFocus={handleOnFocus}
       />
+      {error && <div>{error}</div>}
       {/* <ErrorMessage error={error} /> */}
       <Button type='submit' view='primary' full>
         Войти

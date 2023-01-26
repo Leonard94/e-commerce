@@ -4,7 +4,11 @@ import { useForm } from '../../useForm'
 import { Input } from '@components/UI/Input/Input'
 import { Button } from '@components/UI/Button/Button'
 
-export const Register = () => {
+type TProps = {
+  onClose: () => void
+}
+
+export const Register: React.FC<TProps> = (onClose) => {
   const { values, errors, handleInput, setErrors, handleOnFocus } = useForm({
     firstName: '',
     email: '',

@@ -1,7 +1,9 @@
+import { TError, TStatus } from './general'
+
 export type TInitialState = {
   productsList: TCategory[]
-  status: 'pending' | 'fulfilled' | 'error'
-  error: null | string 
+  status: TStatus
+  error: TError
   openProduct: null | TProduct
 }
 

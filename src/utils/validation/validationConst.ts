@@ -21,7 +21,7 @@ export const VALIDATE_ERRORS = {
 
   firstNameWrongSize: `Имя должно содержать от ${FIRST_NAME_SIZE.min} до ${FIRST_NAME_SIZE.max} букв`,
   emailWrongSize: `Электронная почта должна содержать более ${EMAIL_SIZE.min} символов`,
-  passwordWrongSize: `Пароль не должен быть короче ${PASSWORD_SIZE.min} символов`,
+  passwordWrongSize: `Пароль не может быть короче ${PASSWORD_SIZE.min} символов`,
 
   passwordNotCorrect:
     'Пароль должен содержать хотя бы одну заглавную латинскую букву и хотя бы одну цифру',
