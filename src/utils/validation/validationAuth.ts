@@ -13,13 +13,13 @@ import {
   VALIDATE_ERRORS,
 } from './validationConst'
 
-const validateFirstName = (firstName: string, error: TErrors) => {
-  if (!isExists(firstName)) {
-    error.firstName = VALIDATE_ERRORS.firstNameNotExists
+const validateFirstName = (first_name: string, error: TErrors) => {
+  if (!isExists(first_name)) {
+    error.first_name = VALIDATE_ERRORS.firstNameNotExists
     return
   }
-  if (!hasRequiredSize(firstName, FIRST_NAME_SIZE.min, FIRST_NAME_SIZE.max)) {
-    error.firstName = VALIDATE_ERRORS.firstNameWrongSize
+  if (!hasRequiredSize(first_name, FIRST_NAME_SIZE.min, FIRST_NAME_SIZE.max)) {
+    error.first_name = VALIDATE_ERRORS.firstNameWrongSize
     return
   }
 }
@@ -72,7 +72,7 @@ const validateConfirmPassword = (
 export const validateRegisterForm = (formData: TFormDataRegister) => {
   const errors: TErrors = {}
 
-  validateFirstName(formData.firstName, errors)
+  validateFirstName(formData.first_name, errors)
   validateEmail(formData.email, errors)
   validatePassword(formData.password, errors)
   validateConfirmPassword(formData.confirmPassword, formData.password, errors)

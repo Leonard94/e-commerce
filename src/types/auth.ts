@@ -1,12 +1,12 @@
 export type TErrors = {
-  firstName?: string
+  first_name?: string
   email?: string
   password?: string
   confirmPassword?: string
 }
 
 export type TFormDataRegister = {
-  firstName: string
+  first_name: string
   email: string
   password: string
   confirmPassword: string

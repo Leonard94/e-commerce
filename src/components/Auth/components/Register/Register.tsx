@@ -1,6 +1,9 @@
 import { validateRegisterForm } from '@utils/validation/validationAuth'
 import { useForm } from '../../useForm'
 
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { register } from '@store/userSlice'
+
 import { Input } from '@components/UI/Input/Input'
 import { Button } from '@components/UI/Button/Button'
 
@@ -8,9 +11,12 @@ type TProps = {
   onClose: () => void
 }
 
-export const Register: React.FC<TProps> = (onClose) => {
+export const Register: React.FC<TProps> = ({ onClose }) => {
+  const dispatch = useAppDispatch()
+  const { error } = useAppSelector((state) => state.user)
+
   const { values, errors, handleInput, setErrors, handleOnFocus } = useForm({
-    firstName: '',
+    first_name: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -24,7 +30,9 @@ export const Register: React.FC<TProps> = (onClose) => {
     if (Object.keys(formErrors).length) {
       setErrors({ ...formErrors })
     } else {
-      console.log('Отправляем запрос на регистрацию =>', values)
+      dispatch(register(values)).then((resp) => {
+        if (resp.payload) onClose()
+      })
     }
   }
 
@@ -32,12 +40,12 @@ export const Register: React.FC<TProps> = (onClose) => {
     <form onSubmit={handleSubmit} noValidate>
       <Input
         label='Имя'
-        name='firstName'
+        name='first_name'
         placeholder='Vladislav'
         type='text'
         value={values.firstName}
         onChange={handleInput}
-        error={errors.firstName}
+        error={errors.first_name}
         onFocus={handleOnFocus}
       />
       <Input
@@ -70,6 +78,7 @@ export const Register: React.FC<TProps> = (onClose) => {
         error={errors.confirmPassword}
         onFocus={handleOnFocus}
       />
+      {error && <div>{error}</div>}
       {/* <ErrorMessage error={error} /> */}
       <Button type='submit' view='primary' full>
         Зарегистрироваться
