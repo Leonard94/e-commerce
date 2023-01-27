@@ -1,11 +1,14 @@
+import { useEffect } from 'react'
+
 import { validateLoginForm } from '@utils/validation/validationAuth'
 import { useForm } from '../../useForm'
 
 import { useAppDispatch, useAppSelector } from '@store/hooks'
-import { login } from '@store/userSlice'
+import { login, resetError } from '@store/userSlice'
 
 import { Input } from '@components/UI/Input/Input'
 import { Button } from '@components/UI/Button/Button'
+import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 
 type TProps = {
   onClose: () => void
@@ -34,6 +37,12 @@ export const Login: React.FC<TProps> = ({ onClose }) => {
     }
   }
 
+  useEffect(() => {
+    return () => {
+      if (error) dispatch(resetError())
+    }
+  }, [dispatch, error])
+
   return (
     <form onSubmit={handleSubmit} noValidate>
       <Input
@@ -56,8 +65,7 @@ export const Login: React.FC<TProps> = ({ onClose }) => {
         error={errors.password}
         onFocus={handleOnFocus}
       />
-      {error && <div>{error}</div>}
-      {/* <ErrorMessage error={error} /> */}
+      <ErrorMessage error={error} />
       <Button type='submit' view='primary' full>
         Войти
       </Button>

@@ -35,8 +35,9 @@
 }
 
 .message {
-  padding: 5px 0 0 10px;
-  font-size: 12px;
   position: absolute;
+  padding: 5px 0 0 0px;
+
+  font-size: 10px;
   color: $color-notification-danger;
 }

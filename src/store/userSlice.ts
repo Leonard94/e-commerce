@@ -1,31 +1,23 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-
+import { TLoginData, TRegisterData } from '@type/auth'
 import { TInitialStateUser } from '@type/user'
 import { api } from '../services/api'
 
-type TLogin = {
-  email: string
-  password: string
-}
-
-type TRegister = {
-  email: string
-  password: string
-  first_name: string
-}
-
-export const login = createAsyncThunk('user/login', async (data: TLogin) => {
-  try {
-    const response = await api.post(`/auth/login`, data)
-    return response.data
-  } catch (error: any) {
-    throw new Error(error.response.data.message)
+export const login = createAsyncThunk(
+  'user/login',
+  async (data: TLoginData) => {
+    try {
+      const response = await api.post(`/auth/login`, data)
+      return response.data
+    } catch (error: any) {
+      throw new Error(error.response.data.message)
+    }
   }
-})
+)
 
 export const register = createAsyncThunk(
   'user/register',
-  async (data: TRegister) => {
+  async (data: TRegisterData) => {
     try {
       const response = await api.post(`/auth/register`, data)
       return response.data
@@ -45,7 +37,11 @@ const initialState: TInitialStateUser = {
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    resetError: (state) => {
+      state.error = null
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, { payload }) => {
       state.isAuth = true
@@ -81,5 +77,5 @@ export const userSlice = createSlice({
   },
 })
 
-export const {} = userSlice.actions
+export const { resetError } = userSlice.actions
 export default userSlice.reducer

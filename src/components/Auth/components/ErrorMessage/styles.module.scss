@@ -1,0 +1,11 @@
+@import '@styles/typography.scss';
+@import '@styles/variables.scss';
+
+.error {
+  @include label;
+
+  text-align: center;
+  color: $color-notification-danger;
+
+  margin-bottom: 30px;
+}

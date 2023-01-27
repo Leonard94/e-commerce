@@ -1,3 +1,14 @@
+type TAuthData = {
+  email: string
+  password: string
+}
+
+export type TLoginData = TAuthData
+
+export type TRegisterData = TAuthData & {
+  first_name: string
+}
+
 export type TErrors = {
   first_name?: string
   email?: string

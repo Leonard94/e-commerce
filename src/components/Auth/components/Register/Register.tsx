@@ -1,11 +1,14 @@
+import { useEffect } from 'react'
+
 import { validateRegisterForm } from '@utils/validation/validationAuth'
 import { useForm } from '../../useForm'
 
 import { useAppDispatch, useAppSelector } from '@store/hooks'
-import { register } from '@store/userSlice'
+import { register, resetError } from '@store/userSlice'
 
 import { Input } from '@components/UI/Input/Input'
 import { Button } from '@components/UI/Button/Button'
+import { ErrorMessage } from '../ErrorMessage/ErrorMessage'
 
 type TProps = {
   onClose: () => void
@@ -35,6 +38,12 @@ export const Register: React.FC<TProps> = ({ onClose }) => {
       })
     }
   }
+
+  useEffect(() => {
+    return () => {
+      if (error) dispatch(resetError())
+    }
+  }, [dispatch, error])
 
   return (
     <form onSubmit={handleSubmit} noValidate>
@@ -78,8 +87,7 @@ export const Register: React.FC<TProps> = ({ onClose }) => {
         error={errors.confirmPassword}
         onFocus={handleOnFocus}
       />
-      {error && <div>{error}</div>}
-      {/* <ErrorMessage error={error} /> */}
+      <ErrorMessage error={error} />
       <Button type='submit' view='primary' full>
         Зарегистрироваться
       </Button>
