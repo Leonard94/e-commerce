@@ -30,5 +30,6 @@ export type TSize = {
   size_name: string
   weight: string
   price: number
+  img_url: null | string
   fk_product_id: number
 }
