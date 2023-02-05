@@ -21,7 +21,7 @@ export const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='#sauce' className={styles.link}>
+          <NavLink to='/#sauce' className={styles.link}>
             Соусы
           </NavLink>
         </li>

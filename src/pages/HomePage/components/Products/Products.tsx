@@ -1,4 +1,5 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import { TCategory, TProduct } from 'src/types/product'
 
@@ -15,6 +16,7 @@ type TProps = {
 export const Products: React.FC<TProps> = ({ productsList }) => {
   const params = useParams()
   const navigate = useNavigate()
+  const { hash } = useLocation()
 
   const openProductModal = (product_id: number) => {
     navigate(`/products/${product_id}`)
@@ -24,10 +26,21 @@ export const Products: React.FC<TProps> = ({ productsList }) => {
     navigate('/')
   }
 
+  useEffect(() => {
+    if (hash) {
+      const element = document.getElementById(hash.slice(1))
+      if (element) element.scrollIntoView()
+    }
+  }, [hash])
+
   return (
     <>
       {productsList.map((category: TCategory) => (
-        <section key={category.category_id} className={styles.category}>
+        <section
+          key={category.category_id}
+          className={styles.category}
+          id={category.category_code}
+        >
           <h2 className={styles.title}>{category.category_title}</h2>
           <div className={styles.row}>
             {category.items.map((product: TProduct) => (
@@ -42,7 +55,7 @@ export const Products: React.FC<TProps> = ({ productsList }) => {
       ))}
       {/* Проверять наличие такого id, иначе не открывать */}
       <Modal isOpen={Boolean(params.product_id)} onClose={goBack} type='center'>
-        <ProductDetail product_id={Number(params.product_id)} goBack={goBack}/>
+        <ProductDetail product_id={Number(params.product_id)} goBack={goBack} />
       </Modal>
     </>
   )
