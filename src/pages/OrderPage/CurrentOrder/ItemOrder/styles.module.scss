@@ -1,0 +1,28 @@
+@import '@styles/variables.scss';
+@import '@styles/typography.scss';
+
+.item {
+  font-family: 'Nunito';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 100%;
+  color: $color-text-main;
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  margin-bottom: 15px;
+}
+
+.size {
+  font-weight: 300;
+  font-size: 14px;
+  color: $color-text-light;
+}
+
+.info {
+  display: flex;
+  gap: 5px;
+}
+

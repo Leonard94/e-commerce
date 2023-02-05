@@ -1,0 +1,14 @@
+@import '@styles/variables.scss';
+@import '@styles/typography.scss';
+
+.title {
+  @include title;
+
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}

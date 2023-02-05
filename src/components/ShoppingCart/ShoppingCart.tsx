@@ -11,13 +11,17 @@ export const ShoppingCart = () => {
   const [isOpenModal, setOpenModal] = useState(false)
   const { itemsQuantity } = useAppSelector((state) => state.cart)
 
+  const toggleShoppingCart = () => {
+    setOpenModal(!isOpenModal)
+  }
+
   return (
     <>
       <Button
         type='button'
         view='primary'
         small
-        onClick={() => setOpenModal(true)}
+        onClick={toggleShoppingCart}
       >
         Корзина
         {itemsQuantity > 0 && <span> | {itemsQuantity}</span>}
@@ -25,9 +29,9 @@ export const ShoppingCart = () => {
       <Modal
         type='drawer'
         isOpen={isOpenModal}
-        onClose={() => setOpenModal(false)}
+        onClose={toggleShoppingCart}
       >
-        {itemsQuantity === 0 ? <CartIsEmpty /> : <CartContent />}
+        {itemsQuantity === 0 ? <CartIsEmpty /> : <CartContent closeShoppingCart={toggleShoppingCart}/>}
       </Modal>
     </>
   )

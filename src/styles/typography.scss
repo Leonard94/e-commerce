@@ -64,3 +64,10 @@
   color: $color-text-light;
 }
 
+@mixin stepLabel {
+  font-family: 'Nunito';
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 120%;
+}
+
