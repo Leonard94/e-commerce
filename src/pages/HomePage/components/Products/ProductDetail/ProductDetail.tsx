@@ -40,7 +40,13 @@ export const ProductDetail: React.FC<TProps> = ({ product_id, goBack }) => {
   }
   return (
     <div className={styles.body}>
-      <ProductPhoto title={product.title} preview_url={product.preview_url} img_url={product.sizes[currentSize].img_url}/>
+      <ProductPhoto
+        title={product.title}
+        preview_url={product.preview_url}
+        img_url={product.sizes[currentSize].img_url}
+        category={product.category_title}
+        currentSize={currentSize}
+      />
       <div className={styles.product}>
         <div className={styles.info}>
           <div className={styles.title}>{product.title}</div>
