@@ -9,6 +9,7 @@ import {
 } from '@store/cartSlice'
 
 import styles from './styles.module.scss'
+import { getDeclination } from '@utils/getDeclination'
 
 export const CartContent = () => {
   const { cartProductsList, itemsQuantity } = useAppSelector(
@@ -30,7 +31,7 @@ export const CartContent = () => {
 
   return (
     <div className={styles.body}>
-      <div className={styles.header}>{itemsQuantity + ' товаров'}</div>
+      <div className={styles.header}>{getDeclination(itemsQuantity, 'products')}</div>
       <div className={styles.content}>
         <ul className={styles.cartProductsList}>
           {cartProductsList.map((product) => (
