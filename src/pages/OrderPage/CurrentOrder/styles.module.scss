@@ -37,4 +37,11 @@
 
   display: flex;
   justify-content: space-between;
+
+  &_title {
+  }
+
+  &_sum {
+    font-size: 16px;
+  }
 }

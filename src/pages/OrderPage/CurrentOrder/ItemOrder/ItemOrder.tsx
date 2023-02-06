@@ -1,16 +1,26 @@
+import { TCartProduct } from '@type/cart'
+
 import styles from './styles.module.scss'
 
-export const ItemOrder = () => {
+export const ItemOrder: React.FC<TCartProduct> = ({
+  title,
+  size_name,
+  weight,
+  quantity,
+  totalPrice,
+}) => {
   return (
     <li className={styles.item}>
       <div>
-        <p>Пепперони</p>
-        <span className={styles.size}>маленькая, 400 г</span>
+        <p className={styles.title}>{title}</p>
+        <span className={styles.size}>
+          {size_name}{weight && `, ${weight}`}
+        </span>
       </div>
       <div className={styles.info}>
-        <span className={styles.quantity}>7</span>
-        <span className={styles.icon}>x</span>
-        <span className={styles.total}>1232 руб.</span>
+        <span>{quantity}</span>
+        <span>x</span>
+        <span>{totalPrice} руб.</span>
       </div>
     </li>
   )
